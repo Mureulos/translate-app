@@ -1,8 +1,15 @@
 @use '../src/assets/scss/settings.scss' as vars;
 
-@import "tailwindcss";
+@use "tailwindcss/base" as *;
+@use "tailwindcss/components" as *;
+@use "tailwindcss/utilities" as *;
+
 
 * {
     font-family: 'DMSans Regular';
     color: vars.$terciary;
+}
+
+html, body {
+    background-color: vars.$secondary;
 }
