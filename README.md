@@ -1,59 +1,24 @@
-# TranslateApp
+# DevChallenge: Translate-app
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+This is a front-end web application that enables users to translate text quickly and efficiently between multiple languages. The user inputs the text, selects the desired target language, and the application communicates with a translation API to display the translated result in real time. The interface is designed to be fast, intuitive, and responsive, ensuring an easy and seamless translation experience.
 
-## Development server
+## Technologies:
 
-To start a local development server, run:
+- **Frontend:** Angular + Material Angular + TailwindCSS + [My memory API](https://mymemory.translated.net/doc/spec.php)
 
-```bash
-ng serve
-```
+<img src="https://skillicons.dev/icons?i=angular,tailwind"/>
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## **Project Checklist:**
 
-## Code scaffolding
+### User stories:
+- [ ]  Create a translate application page that matches the given design.
+- [ ]  By default, it should translate 'Hello, how are you' to French.
+- [ ]  Users can change translating text with a maximum of 500 characters.
+- [ ]  Users can see the translated text after selecting the Translate button. Optionally, users can see updates in real-time and you use debounce or throttling to optimize the application.
+- [ ]  Users can choose different languages to translate from. They should see at least 3 options: Detect Language, English and French.
+- [ ]  Users can switch translation language and translated language.
+- [ ]  Users can have the option to listen to the translating and translated texts.
+- [ ]  Users can copy the translating and translated texts.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Thumbnail:
+![Thumbnail](/src/assets/img/jpg/thumbnail.jpg)
