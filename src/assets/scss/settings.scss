@@ -1,0 +1,38 @@
+// Colors:
+$primary: #4D5562;
+$secondary: #040711;
+$terciary: #F9FAFB;
+$iron: #D2D5DA;
+$bright-grey: #394150;
+$periwinkle-blue: #7CA9F3;
+
+// Typography:
+@font-face {
+    font-family: 'DMSans Black';
+    src: url('../fonts/DMSans-Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DMSans Bold';
+    src: url('../fonts/DMSans-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DMSans SemiBold';
+    src: url('../fonts/DMSans-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DMSans Medium';
+    src: url('../fonts/DMSans-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DMSans Regular';
+    src: url('../fonts/DMSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'DMSans Light';
+    src: url('../fonts/DMSans-Light.ttf') format('truetype');
+}

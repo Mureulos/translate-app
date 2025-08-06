@@ -1,0 +1,8 @@
+@use '../src/assets/scss/settings.scss' as vars;
+
+@import "tailwindcss";
+
+* {
+    font-family: 'DMSans Regular';
+    color: vars.$terciary;
+}
