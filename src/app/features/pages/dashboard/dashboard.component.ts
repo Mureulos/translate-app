@@ -1,21 +1,46 @@
-import { Component, OnInit } from '@angular/core';
-import { PanelComponent } from '../../../shared/components/panel/panel.component';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { TranslationService } from '../../../core/services/translation.service';
+import { PanelComponent } from '../../../shared/components/panel/panel.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  imports: [PanelComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent implements OnInit {
-  constructor(private translationService: TranslationService) {}
+  text: string = 'Hello, how are you?';
+  sourceLang: string = 'en';
+  targetLang: string = 'fr';
+  translation: string = '';
+
+  constructor(private translationService: TranslationService) { }
 
   ngOnInit(): void {
-    this.translationService.Translate('Olá, tudo bem?', 'pt-br', 'en').subscribe({
+    this.getTranslate();
+  }
+
+  private getTranslate() {
+    this.translationService.translateApi(
+      this.text,
+      this.sourceLang,
+      this.targetLang
+    ).subscribe({
       next: response => {
-        console.log(response.responseData.translatedText)
+        this.translation = response.responseData.translatedText;
       }
     })
+  }
+
+  public updateText(text: string): void {
+    this.text = text;
+  }
+
+  public updateSourceLang(source: string): void {
+    this.sourceLang = source;
+  }
+
+  public updateTargetLang(target: string): void {
+    this.targetLang = target;
   }
 }

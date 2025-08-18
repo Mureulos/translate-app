@@ -10,9 +10,13 @@ import { TranslationResponse } from '../responses/translate-response';
 export class TranslationService {
   private readonly _apiUrl = environment.myMemoryApi;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  public Translate(text: string, sourceLang: string, targetLang: string): Observable<TranslationResponse> {
+  public translateApi(
+    text: string, 
+    sourceLang: string, 
+    targetLang: string
+  ): Observable<TranslationResponse> {
     const params = {
       q: text,
       langpair: `${sourceLang}|${targetLang}`
