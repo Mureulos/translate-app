@@ -37,6 +37,9 @@ module.exports = {
       },
       backgroundColor: {
         "transparent": "transparent"
+      },
+      maxWidth: {
+        "1250": "1250px"
       }
     }
   },
