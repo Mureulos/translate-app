@@ -4,23 +4,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-panel',
-  standalone: true,
+  selector: 'app-panel-display',
   imports: [
-    ReactiveFormsModule, 
-    MatFormFieldModule, 
-    MatInputModule, 
-    MatButtonModule, 
-    MatIconModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    CommonModule
   ],
-  templateUrl: './panel.component.html',
-  styleUrl: './panel.component.scss'
+  templateUrl: './panel-display.component.html',
+  styleUrl: './panel-display.component.scss'
 })
-export class PanelComponent implements OnChanges {
-  translationControl = new FormControl('');
-  
+export class PanelDisplayComponent implements OnChanges {
+  public translationControl = new FormControl('');
   @Input() translation: string = '';
 
   ngOnChanges(changes: SimpleChanges): void {

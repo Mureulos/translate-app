@@ -1,3 +1,4 @@
 <main class="relative z-20 top-60 flex justify-center flex-wrap gap-4 p-8">
-    <app-panel [translation]="translation"></app-panel>
+  <app-panel-input class="w-full" (textEvent)="updateText($event)"/>
+  <app-panel-display class="w-full" [translation]="translation"/>
 </main>
