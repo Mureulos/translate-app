@@ -8,8 +8,26 @@
 * {
     font-family: 'DMSans Regular';
     color: vars.$terciary;
+    outline: none;
 }
 
 html, body {
     background-color: vars.$secondary;
+}
+
+.glass-effect {
+    padding: 1.5rem;
+    width: 100%;
+    height: inherit;
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    border: 1px solid vars.$primary;
+
+    textarea {
+        font-family: 'DMSans Bold';
+        height: 176px;
+        width: 100%;
+        background-color: transparent;
+        resize: none;
+    }
 }

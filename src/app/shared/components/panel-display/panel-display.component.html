@@ -1,19 +1,17 @@
-<form class="w-full">
-    <mat-form-field class="w-full">
-        <textarea 
-            matInput 
-            [formControl]="translationControl" 
-            value="Hello, how are you?"
-        ></textarea>
+<form class="w-full glass-effect">
+    <textarea 
+        matInput 
+        [formControl]="translationControl" 
+        readonly
+    ></textarea>
 
-        <div class="flex items-end justify-between">
-            <div class="flex gap-2">
-                <button matMiniFab>
-                    <mat-icon fontIcon="volume_up"></mat-icon>
-                </button>
-                
-                <app-copy-button [copy]="translationControl.value ?? ''"/>
-            </div>
+    <div class="flex items-end justify-between">
+        <div class="flex gap-2">
+            <button matMiniFab>
+                <mat-icon fontIcon="volume_up"></mat-icon>
+            </button>
+            
+            <app-copy-button [copy]="translationControl.value ?? ''"/>
         </div>
-    </mat-form-field>
+    </div>
 </form>
