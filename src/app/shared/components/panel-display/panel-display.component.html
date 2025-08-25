@@ -1,5 +1,19 @@
 <form class="w-full">
     <mat-form-field class="w-full">
-        <textarea matInput [formControl]="translationControl"></textarea>
+        <textarea 
+            matInput 
+            [formControl]="translationControl" 
+            value="Hello, how are you?"
+        ></textarea>
+
+        <div class="flex items-end justify-between">
+            <div class="flex gap-2">
+                <button matMiniFab>
+                    <mat-icon fontIcon="volume_up"></mat-icon>
+                </button>
+                
+                <app-copy-button [copy]="translationControl.value ?? ''"/>
+            </div>
+        </div>
     </mat-form-field>
 </form>

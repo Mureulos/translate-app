@@ -17,6 +17,7 @@ module.exports = {
       'iron': "#D2D5DA",
       'bright-grey': "#394150",
       'periwinkle-blue': "#7CA9F3",
+      'sapphire': "#263FA9"
     },
     fontFamily: {
       sans: ["DMSans Regular", "sans-serif"],
@@ -40,6 +41,14 @@ module.exports = {
       },
       maxWidth: {
         "1250": "1250px"
+      },
+      fontSize: {
+        "text-8": "8px",
+        "text-10": "10px",
+      },
+      border: {
+        'primary': "#4D5562",
+        'periwinkle-blue': "#7CA9F3",
       }
     }
   },

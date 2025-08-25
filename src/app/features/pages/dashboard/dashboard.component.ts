@@ -31,7 +31,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
         distinctUntilChanged(),
         switchMap(text => {
           this.loading = true;
-          return this.translationService.translateApi(text, this.sourceLang, this.targetLang);
+          return this.translationService.translateApi(
+            text, 
+            this.sourceLang, 
+            this.targetLang
+          );
         })
       )
       .subscribe({

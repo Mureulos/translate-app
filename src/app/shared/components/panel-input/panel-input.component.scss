@@ -1,0 +1,5 @@
+@use '../../../../assets/scss/settings.scss' as vars;
+
+.btn__translate {
+    border: 1px solid vars.$periwinkle-blue;
+}

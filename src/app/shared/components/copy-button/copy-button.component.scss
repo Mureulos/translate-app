@@ -1,0 +1,5 @@
+@use '../../../../assets/scss/settings.scss' as vars;
+
+button {
+    border: 2px solid vars.$primary !important;
+}

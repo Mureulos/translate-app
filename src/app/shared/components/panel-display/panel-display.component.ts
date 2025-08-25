@@ -5,6 +5,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { CopyButtonComponent } from '../copy-button/copy-button.component';
 
 @Component({
   selector: 'app-panel-display',
@@ -14,7 +15,8 @@ import { CommonModule } from '@angular/common';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    CommonModule
+    CommonModule,
+    CopyButtonComponent
   ],
   templateUrl: './panel-display.component.html',
   styleUrl: './panel-display.component.scss'
