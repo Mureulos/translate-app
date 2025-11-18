@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { TranslationService } from '../../../core/services/translation.service';
 import { PanelDisplayComponent } from "../../../shared/components/panel-display/panel-display.component";
 import { PanelInputComponent } from '../../../shared/components/panel-input/panel-input.component';
+import { LanguageStateService } from '../../../core/services/language-state.service';
 // Não precisamos mais de RxJS, Subject ou Subscription aqui
 // import { Subject, Subscription } from 'rxjs';
 // import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
@@ -15,12 +16,13 @@ import { PanelInputComponent } from '../../../shared/components/panel-input/pane
 })
 export class DashboardComponent {
   public text: string = ''; 
-  public sourceLang: string = 'en';
-  public targetLang: string = 'fr';
+  public sourceLang = signal('en');
+  public targetLang = signal('fr');
   public translation: string = '';
 
   public loading: boolean = false;
   private _translationService = inject(TranslationService);
+  public _languageState = inject(LanguageStateService);
 
   private _translate(): void {
     if (!this.text || this.text.trim() === '') {
@@ -29,8 +31,10 @@ export class DashboardComponent {
     }
 
     this.loading = true;
+    const source = this._languageState.sourceLang();
+    const target = this._languageState.targetLang();
 
-    this._translationService.translateApi(this.text, this.sourceLang, this.targetLang)
+    this._translationService.translateApi(this.text, source, target)
     .subscribe({
       next: response => {
         this.translation = response.responseData.translatedText;
@@ -48,12 +52,12 @@ export class DashboardComponent {
   }
 
   public updateSourceLang(source: string): void {
-    this.sourceLang = source;
+    this._languageState.setSourceLang(source);
     this._translate();
   }
 
   public updateTargetLang(target: string): void {
-    this.targetLang = target;
+    this._languageState.setTargetLang(target);
     this._translate();
   }
 }

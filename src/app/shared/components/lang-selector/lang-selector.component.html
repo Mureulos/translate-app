@@ -1,0 +1,28 @@
+<div class="mb-6">
+  <section class="flex items-center gap-8">
+    @if (target() === true) {
+      <button type="button">Detect Language</button>
+    }
+
+    @for (lang of suggestions; track lang.code) {
+      <button 
+        type="button" 
+        (click)="selectLanguage(lang.code)"
+        [class.active]="activeLang() === lang.code"
+      >
+        {{ lang.name }}
+      </button>
+    }
+
+    <select (change)="selectFromDropdown($event)">
+      @for (language of _languages.getLanguages(); track language.code) {
+        <option 
+          [value]="language.code"
+          [selected]="activeLang() === language.code"
+        >
+          {{ language.name }}
+        </option>
+      }
+    </select>
+  </section>
+</div>
