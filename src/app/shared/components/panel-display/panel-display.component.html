@@ -1,4 +1,7 @@
 <form class="w-full glass-effect">
+    <app-lang-selector
+    ></app-lang-selector>
+
     <textarea 
         matInput 
         [formControl]="translationControl" 
@@ -6,11 +9,8 @@
     ></textarea>
 
     <div class="flex items-end justify-between">
-        <div class="flex gap-2">
-            <button matMiniFab>
-                <mat-icon fontIcon="volume_up"></mat-icon>
-            </button>
-            
+        <div class="flex items-center gap-2">
+            <mat-icon matMiniFab fontIcon="volume_up"></mat-icon>
             <app-copy-button [copy]="translationControl.value ?? ''"/>
         </div>
     </div>
