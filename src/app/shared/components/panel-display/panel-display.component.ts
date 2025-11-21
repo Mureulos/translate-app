@@ -5,8 +5,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CopyButtonComponent } from '../copy-button/copy-button.component';
 import { LangSelectorComponent } from '../lang-selector/lang-selector.component';
+import { UtilsService } from '../../utils.service';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-panel-display',
@@ -17,8 +18,8 @@ import { LangSelectorComponent } from '../lang-selector/lang-selector.component'
     MatButtonModule,
     MatIconModule,
     CommonModule,
-    CopyButtonComponent,
-    LangSelectorComponent
+    LangSelectorComponent,
+    ButtonModule
   ],
   templateUrl: './panel-display.component.html',
   styleUrl: './panel-display.component.scss'
@@ -32,5 +33,9 @@ export class PanelDisplayComponent {
       const novoValor = this.translation(); 
       this.translationControl.setValue(novoValor);
     });
+  }
+
+  public copyText(text: string): void {
+    UtilsService.copyToClickboard(text);
   }
 }

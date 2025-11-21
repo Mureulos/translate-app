@@ -20,13 +20,7 @@ module.exports = {
       'sapphire': "#263FA9"
     },
     fontFamily: {
-      sans: ["DMSans Regular", "sans-serif"],
-      serif: ["DMSans Regular", "serif"],
-      "medium": ["DMSans Medium", "serif"],
-      "regular": ["DMSans Regular", "serif"],
-      "semibold": ["DMSans SemiBold", "serif"],
-      "bold": ["DMSans Bold", "serif"],
-      "black": ["DMSans Black", "serif"],
+      sans: ['"DM Sans"', 'sans-serif'],
     },
     extend: {
       borderRadius: {

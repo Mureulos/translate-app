@@ -3,3 +3,16 @@
 form {
     background-color: #161a26c0;
 }
+
+:host ::ng-deep .p-button { 
+    border-radius: 12px;
+    border: 2px solid vars.$primary;
+    background: transparent;
+    color: white;
+
+    &:hover, &:active, &:focus {
+        border: 2px solid vars.$primary;
+        background: vars.$primary !important;
+        color: white;
+    }
+}

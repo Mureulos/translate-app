@@ -6,12 +6,13 @@
         matInput 
         [formControl]="translationControl" 
         readonly
+        class="font-sans font-semibold"
     ></textarea>
 
     <div class="flex items-end justify-between">
-        <div class="flex items-center gap-2">
-            <mat-icon matMiniFab fontIcon="volume_up"></mat-icon>
-            <app-copy-button [copy]="translationControl.value ?? ''"/>
+        <div class="flex items-center gap-2 feature-buttons">
+            <p-button icon="pi pi-volume-up"/>
+            <p-button (onClick)="copyText(translationControl.value || '')" icon="pi pi-copy"/>
         </div>
     </div>
 </form>

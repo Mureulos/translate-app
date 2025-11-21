@@ -4,3 +4,8 @@ export interface Language {
   nativeName: string;
   flag?: string;
 }
+
+export interface LanguageOptions {
+  code: string;
+  name: string;
+}

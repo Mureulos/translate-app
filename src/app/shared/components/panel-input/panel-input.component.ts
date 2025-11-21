@@ -3,12 +3,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { debounceTime, distinctUntilChanged, startWith } from 'rxjs';
-import { CopyButtonComponent } from '../copy-button/copy-button.component';
 import { LangSelectorComponent } from '../lang-selector/lang-selector.component';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { ButtonModule } from "primeng/button";
+import { UtilsService } from '../../utils.service';
 
 @Component({
   selector: 'app-panel-input',
@@ -19,9 +20,9 @@ import { toSignal } from '@angular/core/rxjs-interop';
     MatButtonModule,
     MatIconModule,
     CommonModule,
-    CopyButtonComponent,
-    LangSelectorComponent
-  ],
+    LangSelectorComponent,
+    ButtonModule,
+],
   templateUrl: './panel-input.component.html',
   styleUrl: './panel-input.component.scss'
 })
@@ -54,8 +55,11 @@ export class PanelInputComponent {
   }
 
   public submitTranslation(): void {
-    if (this.translationControl.valid) {
+    if (this.translationControl.valid)
       this.textEvent.emit(this.translationControl.value ?? '');
-    }
+  }
+
+  public copyText(text: string): void {
+    UtilsService.copyToClickboard(text);
   }
 }

@@ -1,0 +1,35 @@
+@use '../../../../assets/scss/settings.scss' as vars;
+
+:host ::ng-deep .p-togglebutton {
+    background: transparent !important;
+    border: none;
+
+    &:focus-visible, &:active {
+        border: none;
+    }
+}
+
+:host ::ng-deep .p-togglebutton-checked .p-togglebutton-content {
+    background: vars.$primary;
+}
+
+:host ::ng-deep .p-button { 
+    border: none;
+    background: transparent;
+
+    &:hover, &:active, &:focus {
+        border: none;
+        background: vars.$primary !important;
+    }
+}
+
+.swap-button {
+    border: 2px solid vars.$primary;
+    border-radius: 12px;
+}
+
+.horizontal-bar {
+    width: 100%;
+    height: 1px;
+    background-color: vars.$primary;
+}

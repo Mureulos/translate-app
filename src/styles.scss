@@ -6,7 +6,7 @@
 
 
 * {
-    font-family: 'DMSans Regular';
+    font-family: 'DM Sans', sans-serif;
     color: vars.$terciary;
     outline: none;
 }
@@ -24,7 +24,6 @@ html, body {
     border: 1px solid vars.$primary;
 
     textarea {
-        font-family: 'DMSans Bold';
         height: 176px;
         width: 100%;
         background-color: transparent;

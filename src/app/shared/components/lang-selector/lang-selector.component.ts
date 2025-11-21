@@ -1,45 +1,65 @@
 import { Component, computed, inject, input, signal } from '@angular/core';
 import { LanguageService } from '../../../core/services/language.service';
 import { LanguageStateService } from '../../../core/services/language-state.service';
+import { LanguageOptions } from '../../../core/types/language.interface';
+import { SelectButtonModule } from 'primeng/selectbutton'
+import { SelectModule } from 'primeng/select';
+import { FormsModule } from '@angular/forms';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-lang-selector',
-  imports: [],
+  imports: [SelectButtonModule, FormsModule, MenuModule, ButtonModule],
   templateUrl: './lang-selector.component.html',
-  styleUrl: './lang-selector.component.scss'
+  styleUrl: './lang-selector.component.scss',
 })
 export class LangSelectorComponent {
-    public target = input(false);
-
-    public firstSuggestion = signal('English');
-    public secondSuggestion = signal('French');
-    public thirdSuggestion = signal('Spanish');
-
-    public _languageState = inject(LanguageStateService);
-    public _languages = inject(LanguageService);
-
-    public suggestions = [
-      { name: 'English', code: 'en' },
-      { name: 'French', code: 'fr' },
-      { name: 'Spanish', code: 'es' },
-    ];
-
-    public activeLang = computed(() => {
-      if (this.target() === true)
-        return this._languageState.sourceLang();
-      else
-        return this._languageState.targetLang();
-    });
-
-    public selectLanguage(code: string): void {
-      if (this.target() === true)
-        this._languageState.setSourceLang(code);
-      else
-        this._languageState.setTargetLang(code);
-    }
+  public _languageStateService = inject(LanguageStateService);
+  public _languageService = inject(LanguageService);
   
-    public selectFromDropdown(event: Event): void {
-      const code = (event.target as HTMLSelectElement).value;
-      this.selectLanguage(code);
-    }
+  public target = input(false);
+  
+  public suggestionLanguages: LanguageOptions[] = [
+    { name: 'English', code: 'en' },
+    { name: 'French', code: 'fr' },
+  ];
+
+  public menuOptions: MenuItem[] = this._languageService.getLanguages()
+  .map(l => ({
+    label: l.name,
+    command: () => this.setLanguage(l.code)
+  }));
+
+  public getLanguage = computed(() => {
+    if (this.target() === true)
+      return this._languageStateService.sourceLang();
+    else
+      return this._languageStateService.targetLang();
+  });
+
+  public currentLabel = computed(() => {
+    const currentCode = this.getLanguage();
+
+    const found = this._languageService.getLanguages().find((l) => l.code === currentCode);
+    return found ? found.name : 'Selecione um idioma';
+  });
+
+  public setLanguage(code: string): void {
+    if (!code) return; 
+
+    if (this.target() === true)
+      this._languageStateService.setSourceLang(code);
+    else
+      this._languageStateService.setTargetLang(code);
+  }
+
+  public swapLanguage (): void {
+    const currentSource = this._languageStateService.sourceLang();
+    const currentTarget = this._languageStateService.targetLang();
+
+    this._languageStateService.setSourceLang(currentTarget);
+    this._languageStateService.setTargetLang(currentSource);
+  }
 }
