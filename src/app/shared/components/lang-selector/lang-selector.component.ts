@@ -1,9 +1,8 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, computed, inject, input, ViewEncapsulation } from '@angular/core';
 import { LanguageService } from '../../../core/services/language.service';
 import { LanguageStateService } from '../../../core/services/language-state.service';
 import { LanguageOptions } from '../../../core/types/language.interface';
 import { SelectButtonModule } from 'primeng/selectbutton'
-import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
@@ -14,6 +13,7 @@ import { MenuItem } from 'primeng/api';
   imports: [SelectButtonModule, FormsModule, MenuModule, ButtonModule],
   templateUrl: './lang-selector.component.html',
   styleUrl: './lang-selector.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class LangSelectorComponent {
   public _languageStateService = inject(LanguageStateService);

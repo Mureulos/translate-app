@@ -1,31 +1,43 @@
 @use '../../../../assets/scss/settings.scss' as vars;
 
-:host ::ng-deep .p-togglebutton {
-    background: transparent !important;
-    border: none;
-
-    &:focus-visible, &:active {
+.lang-selector {
+    .p-togglebutton {
+        background: transparent !important;
         border: none;
+    
+        &:focus-visible, &:active {
+            border: none;
+        }
     }
-}
+    
+    .p-togglebutton-checked .p-togglebutton-content {
+        background: vars.$primary;
+    }
+    
+    .p-button {
+        padding-block: 0.15rem;
+        border-radius: 6px;
+        border: 2px solid vars.$primary;
+        background: transparent;
+        color: white;
+        
+        button {
+            margin-right: 8px;
 
-:host ::ng-deep .p-togglebutton-checked .p-togglebutton-content {
-    background: vars.$primary;
-}
+            &:hover, &:active, &:focus {
+                border: 2px solid vars.$primary;
+            }
+        }
+    }
 
-:host ::ng-deep .p-button { 
-    border: none;
-    background: transparent;
-
-    &:hover, &:active, &:focus {
+    .select-button button {
         border: none;
-        background: vars.$primary !important;
-    }
-}
+        outline: none;
 
-.swap-button {
-    border: 2px solid vars.$primary;
-    border-radius: 12px;
+        &:hover, &:active, &:focus {
+            border: 2px solid vars.$primary;
+        }
+    }
 }
 
 .horizontal-bar {

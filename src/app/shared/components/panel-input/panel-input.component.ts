@@ -1,4 +1,4 @@
-import { Component, effect, output } from '@angular/core';
+import { Component, effect, output, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +24,8 @@ import { UtilsService } from '../../utils.service';
     ButtonModule,
 ],
   templateUrl: './panel-input.component.html',
-  styleUrl: './panel-input.component.scss'
+  styleUrl: './panel-input.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class PanelInputComponent {
   public translationControl = new FormControl(

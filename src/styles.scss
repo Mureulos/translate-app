@@ -30,3 +30,9 @@ html, body {
         resize: none;
     }
 }
+
+.p-button button {
+    &:hover, &:active, &:focus {
+        border: none;
+    }
+}

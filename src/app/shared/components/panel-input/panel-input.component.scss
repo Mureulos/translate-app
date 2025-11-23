@@ -8,15 +8,18 @@ form {
     }
 }
 
-:host ::ng-deep .p-button { 
-    border-radius: 12px;
-    border: 2px solid vars.$primary;
-    background: transparent;
-    color: white;
-
-    &:hover, &:active, &:focus {
+.panel-input {
+    .p-button {
+        padding-block: 0.2rem;
+        border-radius: 8px;
         border: 2px solid vars.$primary;
-        background: vars.$primary !important;
+        background: transparent;
         color: white;
+
+        &:hover, &:active, &:focus {
+            border: 2px solid vars.$primary;
+            background: vars.$primary !important;
+            color: white;
+        }
     }
 }

@@ -1,4 +1,4 @@
-<div class="flex flex-col justify-center">
+<div class="flex flex-col justify-center lang-selector">
   <section class="flex flex-col justify-between gap-4 tablet:flex-row table:gap-0">
     <div class="flex items-center">
       <p-selectbutton 
@@ -10,27 +10,26 @@
         class="font-sans font-bold"
       />
     
-      <p-menu 
-        #menu 
-        [model]="menuOptions" 
-        [popup]="true" 
-        appendTo="body"
-      />
-    
       <p-button 
         (click)="menu.toggle($event)"
         [label]="currentLabel()"
         icon="pi pi-chevron-down"
         iconPos="right"
         severity="contrast"
-        text
-        class="font-sans font-bold"
+        class="font-sans font-bold ml-1 select-button"
+      />
+
+      <p-menu 
+        #menu 
+        [model]="menuOptions" 
+        [popup]="true" 
+        appendTo="body"
+        class="max-h-[200px] overflow-y-auto"
       />
     </div>
 
     @if (target() === false) {
       <p-button 
-        class="swap-button"
         (click)="swapLanguage()"
         icon="pi pi-arrow-down-left-and-arrow-up-right-to-center"
       />

@@ -1,4 +1,4 @@
-import { Component, effect, input, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, effect, input, ViewEncapsulation } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -22,7 +22,8 @@ import { ButtonModule } from 'primeng/button';
     ButtonModule
   ],
   templateUrl: './panel-display.component.html',
-  styleUrl: './panel-display.component.scss'
+  styleUrl: './panel-display.component.scss',
+  encapsulation: ViewEncapsulation.None
 })
 export class PanelDisplayComponent {
   public translationControl = new FormControl('');
