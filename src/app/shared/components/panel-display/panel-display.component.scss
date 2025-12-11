@@ -5,17 +5,18 @@ form {
 }
 
 .panel-display {
-    .p-button { 
+    .p-button {
         padding-block: 0.2rem;
         border-radius: 8px;
         border: 2px solid vars.$primary;
         background: transparent;
         color: white;
-    
+        height: 100%;
+
         &:hover, &:active, &:focus {
-            border: 2px solid vars.$primary;
+            border: 2px solid vars.$primary !important;
             background: vars.$primary !important;
-            color: white;
+            height: 100%;
         }
     }
 }
