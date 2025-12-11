@@ -20,13 +20,11 @@
         border: 2px solid vars.$primary;
         background: transparent;
         color: white;
+        height: 100%;
         
-        button {
-            margin-right: 8px;
-
-            &:hover, &:active, &:focus {
-                border: 2px solid vars.$primary;
-            }
+        &:hover, &:active, &:focus {
+            border: 2px solid vars.$primary;
+            color: transparent;
         }
     }
 
@@ -36,6 +34,7 @@
 
         &:hover, &:active, &:focus {
             border: 2px solid vars.$primary;
+            color: transparent;
         }
     }
 }

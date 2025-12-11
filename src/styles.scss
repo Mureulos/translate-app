@@ -18,7 +18,7 @@ html, body {
 .glass-effect {
     padding: 1.5rem;
     width: 100%;
-    height: inherit;
+    // height: inherit;
     backdrop-filter: blur(10px);
     border-radius: 1.5rem;
     border: 1px solid vars.$primary;
@@ -31,8 +31,14 @@ html, body {
     }
 }
 
-.p-button button {
+p-button, .p-button {
     &:hover, &:active, &:focus {
         border: none;
+    }
+
+    &:focus-visible {
+        border: none;
+        background-color: none;
+        outline: none;
     }
 }

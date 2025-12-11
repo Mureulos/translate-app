@@ -1,10 +1,15 @@
-@use '../../../../assets/scss/settings.scss' as vars;
+@use '../../../../assets/scss/settings.scss' as settings;
 
 form {
     background-color: #242a36d6;
 
     .btn__translate {
-        border: 1px solid vars.$periwinkle-blue;
+        border: 1px solid settings.$periwinkle-blue;
+        transition: all 0.15s ease-out;
+
+        &:hover, &:active, &:focus {
+            background-color: settings.$periwinkle-blue !important;
+        }
     }
 }
 
@@ -12,14 +17,15 @@ form {
     .p-button {
         padding-block: 0.2rem;
         border-radius: 8px;
-        border: 2px solid vars.$primary;
+        border: 2px solid settings.$primary;
         background: transparent;
         color: white;
+        height: 100%;
 
         &:hover, &:active, &:focus {
-            border: 2px solid vars.$primary;
-            background: vars.$primary !important;
-            color: white;
+            border: 2px solid settings.$primary !important;
+            background: settings.$primary !important;
+            height: 100%;
         }
     }
 }
