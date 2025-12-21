@@ -3,9 +3,7 @@ import { TranslationService } from '../../../core/services/translation.service';
 import { PanelDisplayComponent } from "../../../shared/components/panel-display/panel-display.component";
 import { PanelInputComponent } from '../../../shared/components/panel-input/panel-input.component';
 import { LanguageStateService } from '../../../core/services/language-state.service';
-// Não precisamos mais de RxJS, Subject ou Subscription aqui
-// import { Subject, Subscription } from 'rxjs';
-// import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
+import { TranslationResponse } from '../../../core/types/responses/translate-response';
 
 @Component({
   selector: 'app-dashboard',
@@ -34,10 +32,10 @@ export class DashboardComponent {
     const source = this._languageState.sourceLang();
     const target = this._languageState.targetLang();
 
-    this._translationService.translateApi(this.text, source, target)
+    this._translationService.translation(this.text, source, target)
     .subscribe({
-      next: response => {
-        this.translation = response.responseData.translatedText;
+      next: (response: TranslationResponse) => {
+        this.translation = response.translation.translation;
         this.loading = false;
       },
       error: () => {
@@ -51,12 +49,12 @@ export class DashboardComponent {
     this._translate();
   }
 
-  public updateSourceLang(source: string): void {
+  public updateSourceLang(source: number): void {
     this._languageState.setSourceLang(source);
     this._translate();
   }
 
-  public updateTargetLang(target: string): void {
+  public updateTargetLang(target: number): void {
     this._languageState.setTargetLang(target);
     this._translate();
   }

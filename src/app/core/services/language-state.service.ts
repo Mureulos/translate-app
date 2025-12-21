@@ -4,17 +4,17 @@ import { Injectable, signal } from '@angular/core';
   providedIn: 'root'
 })
 export class LanguageStateService {
-    private _sourceLang = signal('en');
-    private _targetLang = signal('fr');
+    private _sourceLang = signal(1);
+    private _targetLang = signal(2);
 
     public readonly sourceLang = this._sourceLang.asReadonly();
     public readonly targetLang = this._targetLang.asReadonly();
 
-    public setSourceLang(lang: string): void {
-        this._sourceLang.set(lang);
+    public setSourceLang(language: number): void {
+        this._sourceLang.set(language);
     }
     
-    public setTargetLang(lang: string): void {
-        this._targetLang.set(lang);
+    public setTargetLang(language: number): void {
+        this._targetLang.set(language);
     }
 }

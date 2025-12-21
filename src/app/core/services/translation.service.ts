@@ -1,27 +1,31 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment.development';
-import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TranslationResponse } from '../responses/translate-response';
+import { TranslationResponse } from '../types/responses/translate-response';
+import { API_URL } from '../tokens/api.token';
+import { TranslationRequest } from '../types/requests/translation.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TranslationService {
-  private readonly _apiUrl = environment.myMemoryApi;
+  private readonly _apiUrl = inject(API_URL);
+  private readonly _http = inject(HttpClient);
 
-  constructor(private http: HttpClient) { }
-
-  public translateApi(
+  public translation(
     text: string, 
-    sourceLang: string, 
-    targetLang: string
+    sourceLanguageId: number, 
+    targetLanguageId: number
   ): Observable<TranslationResponse> {
-    const params = {
-      q: text,
-      langpair: `${sourceLang}|${targetLang}`
-    };
+    // const params = new HttpParams()
+    //   .set('text', text)
+    //   .set('sourceLanguageId', sourceLanguageId)
+    //   .set('targetLanguageId', targetLanguageId);
 
-    return this.http.get<TranslationResponse>(this._apiUrl, { params });
+    return this._http.post<TranslationResponse>(`${this._apiUrl}translation`, { 
+      text: text,
+      sourceLanguageId: sourceLanguageId,
+      targetLanguageId: targetLanguageId 
+    });
   }
 } 

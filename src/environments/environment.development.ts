@@ -1,3 +1,3 @@
 export const environment = {
-    myMemoryApi: 'https://api.mymemory.translated.net/get?'
+    baseUrl: 'https://localhost:7264/api/'
 };

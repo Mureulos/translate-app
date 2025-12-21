@@ -2,7 +2,6 @@
   <section class="flex flex-col justify-between gap-4 tablet:flex-row table:gap-0">
     <div class="flex items-center">
       <p-selectbutton 
-        [options]="suggestionLanguages"
         [ngModel]="getLanguage()"
         (onChange)="setLanguage($event.value)"
         optionLabel="name" 
@@ -21,7 +20,7 @@
 
       <p-menu 
         #menu 
-        [model]="menuOptions" 
+        [model]="menuOptions()" 
         [popup]="true" 
         appendTo="body"
         class="max-h-[200px] overflow-y-auto"

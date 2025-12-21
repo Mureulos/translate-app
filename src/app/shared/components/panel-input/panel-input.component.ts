@@ -29,7 +29,7 @@ import { UtilsService } from '../../utils.service';
 })
 export class PanelInputComponent {
   public translationControl = new FormControl(
-    'hello, how are you?', 
+    '', 
     [
       Validators.required,
       Validators.maxLength(500)

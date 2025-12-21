@@ -1,8 +1,8 @@
 export interface Language {
+  id: number;
   code: string;
   name: string;
-  nativeName: string;
-  flag?: string;
+  localizedName: string;
 }
 
 export interface LanguageOptions {

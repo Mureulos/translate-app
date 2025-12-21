@@ -30,9 +30,11 @@ export class PanelDisplayComponent {
   public translation = input('');
 
   constructor() {
+    console.log(this.translation())
+
     effect(() => {
-      const novoValor = this.translation(); 
-      this.translationControl.setValue(novoValor);
+      const newValue = this.translation(); 
+      this.translationControl.setValue(newValue);
     });
   }
 

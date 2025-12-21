@@ -1,8 +1,9 @@
 import { Component, computed, inject, input, ViewEncapsulation } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { LanguageService } from '../../../core/services/language.service';
 import { LanguageStateService } from '../../../core/services/language-state.service';
 import { LanguageOptions } from '../../../core/types/language.interface';
-import { SelectButtonModule } from 'primeng/selectbutton'
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from 'primeng/menu';
 import { ButtonModule } from 'primeng/button';
@@ -16,21 +17,18 @@ import { MenuItem } from 'primeng/api';
   encapsulation: ViewEncapsulation.None
 })
 export class LangSelectorComponent {
-  public _languageStateService = inject(LanguageStateService);
-  public _languageService = inject(LanguageService);
+  private _languageStateService = inject(LanguageStateService);
+  private _languageService = inject(LanguageService);
   
   public target = input(false);
-  
-  public suggestionLanguages: LanguageOptions[] = [
-    { name: 'English', code: 'en' },
-    { name: 'French', code: 'fr' },
-  ];
+  public languages = toSignal(this._languageService.getLanguages(), { initialValue: [] });
 
-  public menuOptions: MenuItem[] = this._languageService.getLanguages()
-  .map(l => ({
-    label: l.name,
-    command: () => this.setLanguage(l.code)
-  }));
+  public menuOptions = computed(() => {
+    return this.languages().map(l => ({
+      label: l.name,
+      command: () => this.setLanguage(l.id)
+    }));
+  });
 
   public getLanguage = computed(() => {
     if (this.target() === true)
@@ -42,20 +40,20 @@ export class LangSelectorComponent {
   public currentLabel = computed(() => {
     const currentCode = this.getLanguage();
 
-    const found = this._languageService.getLanguages().find((l) => l.code === currentCode);
-    return found ? found.name : 'Selecione um idioma';
+    const found = this.languages().find(l => l.id === currentCode)
+    return found ? found.name : 'Selecione um idioma'
   });
 
-  public setLanguage(code: string): void {
-    if (!code) return; 
+  public setLanguage(idLanguage: number): void {
+    if (!idLanguage) return;
 
     if (this.target() === true)
-      this._languageStateService.setSourceLang(code);
+      this._languageStateService.setSourceLang(idLanguage);
     else
-      this._languageStateService.setTargetLang(code);
+      this._languageStateService.setTargetLang(idLanguage);
   }
 
-  public swapLanguage (): void {
+  public swapLanguage(): void {
     const currentSource = this._languageStateService.sourceLang();
     const currentTarget = this._languageStateService.targetLang();
 
